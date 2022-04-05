@@ -26,8 +26,6 @@ function App() {
 
     const key = e.key.toLowerCase();
 
-    console.log(curAttempt);
-
     if (isBackspace(e)) {
       setCurGuess((state) => state.slice(0, state.length - 1));
     } else if (isEnter(e)) {
@@ -70,12 +68,13 @@ function App() {
       <main>
         {Array(totalAttempt)
           .fill(0)
-          .map((_, i) => (
+          .map((_, row) => (
             <WordRow
-              guess={curAttempt === i ? curGuess : prevGuesses[i] || ""}
+              guess={curAttempt === row ? curGuess : prevGuesses[row] || ""}
+              guessed={row < curAttempt}
               curAttempt={curAttempt}
               correctWord={correctWord}
-              key={i}
+              key={row}
             />
           ))}
       </main>
