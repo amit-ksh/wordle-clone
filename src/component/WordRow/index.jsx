@@ -2,13 +2,17 @@ import "./WordRow.css";
 
 import LetterBox from "../LetterBox";
 
-const WordRow = ({ guess, word, id }) => {
+const WordRow = ({ curAttempt, correctWord, guess, id }) => {
   return (
     <div className="row">
-      {Array(word.length)
+      {Array(correctWord.length)
         .fill(0)
         .map((l, i) => (
-          <LetterBox letter={guess[i]} word={word} key={`${id}${i}`} />
+          <LetterBox
+            letter={guess[i]}
+            correctWord={correctWord}
+            key={`${id}${i}`}
+          />
         ))}
     </div>
   );

@@ -1,4 +1,4 @@
-const LetterBox = ({ word, letter }) => {
+const LetterBox = ({ correctWord, letter }) => {
   return <div className="col">{letter}</div>;
 };
 

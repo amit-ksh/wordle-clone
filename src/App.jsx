@@ -1,11 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import WordRow from "./component/WordRow";
 
+const isAlpha = (s) => {
+  const r = /^[a-zA-Z]{1,1}$/;
+  return r.test(s);
+};
+
+const isBackspace = ({ keyCode }) => keyCode === 8;
+const isEnter = ({ keyCode }) => keyCode === 13;
+
 function App() {
-  const [word, setWord] = useState("hello");
-  const [guesses, setGuesses] = useState(["hellw", "he", "", "", ""]);
-  const totalGuess = 5;
+  const [correctWord, setCorrectWord] = useState("hello");
+  const [curGuess, setCurGuess] = useState("");
+  const [prevGuesses, setPrevGuesses] = useState([]);
+  const [curAttempt, setCurAttempt] = useState(0);
+  const [game, setGame] = useState({
+    over: false,
+    wordGuessed: false,
+  });
+  const totalAttempt = 5;
+
+  const onKeyPress = (e) => {
+    if (game.over) return;
+
+    const key = e.key.toLowerCase();
+
+    console.log(curAttempt);
+
+    if (isBackspace(e)) {
+      setCurGuess((state) => state.slice(0, state.length - 1));
+    } else if (isEnter(e)) {
+      if (correctWord.length !== curGuess.length) return;
+
+      // GAME LOGIC
+      if (correctWord === curGuess) {
+        setGame((state) => ({ ...state, over: true, wordGuessed: true }));
+        console.log("You Win!");
+      } else if (totalAttempt === curAttempt + 1) {
+        setGame((state) => ({ ...state, over: true, wordGuessed: false }));
+        console.log("You Lose!");
+      }
+
+      // updating game state
+      setPrevGuesses((state) => [...state, curGuess]);
+      setCurGuess("");
+      setCurAttempt((state) => state + 1);
+    } else if (isAlpha(key)) {
+      if (curGuess.length >= correctWord.length) return;
+
+      setCurGuess((state) => state.concat(key));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keyup", onKeyPress);
+
+    return () => {
+      window.removeEventListener("keyup", onKeyPress);
+    };
+  }, [curGuess, prevGuesses, curAttempt]);
 
   return (
     <div className="App">
@@ -14,10 +68,15 @@ function App() {
       </header>
 
       <main>
-        {Array(totalGuess)
+        {Array(totalAttempt)
           .fill(0)
           .map((_, i) => (
-            <WordRow guess={guesses[i]} word={word} key={i} />
+            <WordRow
+              guess={curAttempt === i ? curGuess : prevGuesses[i] || ""}
+              curAttempt={curAttempt}
+              correctWord={correctWord}
+              key={i}
+            />
           ))}
       </main>
     </div>
