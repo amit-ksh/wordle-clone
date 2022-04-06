@@ -1,8 +1,8 @@
-import "./WordRow.css";
+import "./LetterRow.css";
 
 import LetterBox from "../LetterBox";
 
-const WordRow = ({ correctWord, guess, guessed, id }) => {
+const LetterRow = ({ correctWord, guess, guessed, id }) => {
   return (
     <div className="row">
       {Array(correctWord.length)
@@ -20,4 +20,4 @@ const WordRow = ({ correctWord, guess, guessed, id }) => {
   );
 };
 
-export default WordRow;
+export default LetterRow;

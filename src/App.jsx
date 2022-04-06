@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import WordRow from "./component/WordRow";
+import LetterRow from "./component/LetterRow";
 
 const isAlpha = (s) => {
   const r = /^[a-zA-Z]{1,1}$/;
@@ -19,7 +19,7 @@ function App() {
     over: false,
     wordGuessed: false,
   });
-  const totalAttempt = 5;
+  const totalAttempt = 6;
 
   const onKeyPress = (e) => {
     if (game.over) return;
@@ -69,7 +69,7 @@ function App() {
         {Array(totalAttempt)
           .fill(0)
           .map((_, row) => (
-            <WordRow
+            <LetterRow
               guess={curAttempt === row ? curGuess : prevGuesses[row] || ""}
               guessed={row < curAttempt}
               curAttempt={curAttempt}

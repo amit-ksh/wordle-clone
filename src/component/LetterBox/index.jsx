@@ -10,7 +10,7 @@ const LetterBox = ({ correctWord, letter, guessed, index }) => {
       const pos = correctWord.indexOf(letter);
 
       if (pos !== -1) {
-        if (index === pos) {
+        if (letter === correctWord[index]) {
           // position of letter is correct
           setVariants((state) => state.concat(" correct"));
         } else {
