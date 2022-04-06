@@ -22,3 +22,25 @@ main {
   margin-top: 1rem;
   color: white;
 }
+
+#invalid {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+
+  transition: top 400ms ease-out;
+}
+
+#invalid.active {
+  opacity: 1;
+  visibility: visible;
+  top: 85px;
+}
