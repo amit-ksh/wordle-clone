@@ -77,6 +77,10 @@ function App() {
               key={row}
             />
           ))}
+
+        <h2 className="message">
+          {game.over ? (game.wordGuessed ? "You Win!" : "You Lose!") : ""}
+        </h2>
       </main>
     </div>
   );

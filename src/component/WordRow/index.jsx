@@ -11,7 +11,6 @@ const WordRow = ({ correctWord, guess, guessed, id }) => {
           <LetterBox
             letter={guess[i]}
             guessed={guessed}
-            guess={guess}
             correctWord={correctWord}
             key={`${id}${i}`}
             index={i}

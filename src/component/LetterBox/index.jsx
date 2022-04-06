@@ -2,7 +2,7 @@ import "./LetterBox.css";
 
 import { useState, useEffect } from "react";
 
-const LetterBox = ({ correctWord, letter, guess, guessed }) => {
+const LetterBox = ({ correctWord, letter, guessed, index }) => {
   const [variants, setVariants] = useState("col");
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const LetterBox = ({ correctWord, letter, guess, guessed }) => {
       const pos = correctWord.indexOf(letter);
 
       if (pos !== -1) {
-        if (guess[pos] === correctWord[pos]) {
+        if (index === pos) {
           // position of letter is correct
           setVariants((state) => state.concat(" correct"));
         } else {

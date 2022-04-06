@@ -17,3 +17,8 @@ main {
   flex-flow: column nowrap;
   justify-content: center;
 }
+
+.message {
+  margin-top: 1rem;
+  color: white;
+}
