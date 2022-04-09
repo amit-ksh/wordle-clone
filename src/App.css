@@ -1,5 +1,5 @@
 .App {
-  height: 100%;
+  width: 100%;
 }
 
 header h1 {
@@ -16,6 +16,7 @@ main {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  margin: 2rem 1rem auto;
 }
 
 .message {
@@ -43,4 +44,8 @@ main {
   opacity: 1;
   visibility: visible;
   top: 85px;
+}
+
+.keyboard {
+  width: 90%;
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import "./App.css";
+import Keyboard from "./component/Keyboard";
 import LetterRow from "./component/LetterRow";
 import { generateWordSet, isAlpha, isBackspace, isEnter } from "./lib/words";
 
@@ -87,6 +88,20 @@ function App() {
     };
   }, [correctWord, curGuess, prevGuesses, curAttempt]);
 
+  const handleLetterClick = (e) => {
+    if (game.over) return;
+
+    const { key } = e.target.dataset;
+
+    if (key === "enter") {
+      handleGuessSubmit();
+    } else if (key === "delete") {
+      handleLetterDelete();
+    } else {
+      updateCurGuess({ key });
+    }
+  };
+
   return (
     <div className="App">
       <header>
@@ -113,6 +128,10 @@ function App() {
         <h2 className="message">
           {game.over ? (game.wordGuessed ? "You Win!" : "You Lose!") : ""}
         </h2>
+
+        <div className="keyboard">
+          <Keyboard onLetterClick={handleLetterClick} />
+        </div>
       </main>
     </div>
   );
