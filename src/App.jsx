@@ -113,17 +113,19 @@ function App() {
           {invalidMessage}
         </div>
 
-        {Array(totalAttempt)
-          .fill(0)
-          .map((_, row) => (
-            <LetterRow
-              guess={curAttempt === row ? curGuess : prevGuesses[row] || ""}
-              guessed={row < curAttempt}
-              curAttempt={curAttempt}
-              correctWord={correctWord}
-              key={row}
-            />
-          ))}
+        <div className="board">
+          {Array(totalAttempt)
+            .fill(0)
+            .map((_, row) => (
+              <LetterRow
+                guess={curAttempt === row ? curGuess : prevGuesses[row] || ""}
+                guessed={row < curAttempt}
+                curAttempt={curAttempt}
+                correctWord={correctWord}
+                key={row}
+              />
+            ))}
+        </div>
 
         <h2 className="message">
           {game.over ? (game.wordGuessed ? "You Win!" : "You Lose!") : ""}
