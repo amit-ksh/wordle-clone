@@ -43,9 +43,12 @@ function App() {
     // GAME LOGIC
     if (correctWord === curGuess) {
       setGame((state) => ({ ...state, over: true, wordGuessed: true }));
+
+      displayModal(setInvalidMessage, "Congratulation! You Win.", 5000);
       console.log("You Win!");
     } else if (totalAttempt === curAttempt + 1) {
       setGame((state) => ({ ...state, over: true, wordGuessed: false }));
+      displayModal(setInvalidMessage, correctWord.toUpperCase(), 5000);
       console.log("You Lose!");
     }
 
@@ -126,10 +129,6 @@ function App() {
               />
             ))}
         </div>
-
-        <h2 className="message">
-          {game.over ? (game.wordGuessed ? "You Win!" : "You Lose!") : ""}
-        </h2>
 
         <div className="keyboard">
           <Keyboard onLetterClick={handleLetterClick} />
