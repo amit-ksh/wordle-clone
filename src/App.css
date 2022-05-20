@@ -12,6 +12,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .board {
@@ -46,16 +47,16 @@ main {
 
 .keyboard {
   width: 480px;
-  margin: 16% 8px 0;
+  margin-top: 10%;
 }
 
 @media screen and (max-width: 540px) {
   .keyboard {
-    width: 430px;
+    width: 380px;
   }
 }
 @media screen and (max-width: 370px) {
   .keyboard .key-row {
-    padding: 0 35px;
+    padding: 0 45px;
   }
 }

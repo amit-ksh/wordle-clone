@@ -1,6 +1,6 @@
 .key-row {
   display: flex;
-  margin: 0 10px 8px;
+  margin: 0 2.3% 8px 4%;
 }
 
 .key-row > * {
@@ -10,5 +10,5 @@
 .key-row:nth-child(2)::after,
 .key-row:nth-child(2)::before {
   padding: 0.6rem;
-  content: "";
+  content: '';
 }

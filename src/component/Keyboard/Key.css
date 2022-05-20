@@ -12,12 +12,7 @@
   align-items: center;
 }
 
-.key[data-key="enter"],
-.key[data-key="delete"] {
+.key[data-key='enter'],
+.key[data-key='delete'] {
   padding: 0 0.25rem;
-}
-
-.key:hover,
-.key:focus {
-  background-color: #b4b4b4;
 }
